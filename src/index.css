@@ -6,8 +6,6 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  padding: 0;
-  margin: 0;
   /* outline: 1px solid black; */
 }
 
@@ -20,10 +18,20 @@ textarea {
   font-size: inherit;
 }
 
-iframe {
-  width: 100%;
-  height: 100%;
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
   border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
 }
 
 .main-container {
@@ -44,6 +52,7 @@ iframe {
   grid-template-rows: auto 1fr;
   overflow: auto;
   border-radius: 0.3rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .preview-container {
@@ -67,6 +76,11 @@ iframe {
 #editor,
 #preview {
   padding: 1rem;
+  overflow: auto;
+}
+
+#preview {
+  background-color: inherit;
 }
 
 @media (width < 700px) {
