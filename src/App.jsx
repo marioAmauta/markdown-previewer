@@ -5,8 +5,8 @@ function App() {
   return (
     <section className='main-container'>
       <h1 className='title'>Markdown Previewer</h1>
-      <Editor />
       <Preview />
+      <Editor />
     </section>
   );
 }
