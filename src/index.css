@@ -6,7 +6,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  /* outline: 1px solid black; */
+  outline: 1px solid black;
 }
 
 textarea {
@@ -42,10 +42,6 @@ button {
   background-color: aqua;
 }
 
-.title {
-  padding: 0 1rem;
-}
-
 .preview-container,
 .editor-container {
   display: grid;
@@ -63,6 +59,18 @@ button {
   background-color: pink;
 }
 
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+}
+
+.main-header svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -71,6 +79,8 @@ button {
   position: sticky;
   top: 0;
   background-color: inherit;
+  height: 3rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 #editor,
@@ -95,7 +105,7 @@ button {
     grid-template-columns: 1fr 1fr;
   }
 
-  .title {
+  .main-header {
     grid-column-start: 1;
     grid-column-end: 3;
   }

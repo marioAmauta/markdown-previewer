@@ -1,8 +1,8 @@
-import { CompressButton, ExpandButton } from './Icons';
 import { useExpand } from '../hooks/useExpand';
+import { ExpandButton } from './Buttons';
 
 export function Preview() {
-  const { expanded, handleButtonClick, expandedStyles, unexpandedStyles } = useExpand();
+  const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
     <section
@@ -11,9 +11,12 @@ export function Preview() {
     >
       <header className='header'>
         <h3>Preview</h3>
-        <button onClick={handleButtonClick}>
-          {expanded ? <CompressButton /> : <ExpandButton />}
-        </button>
+        <div>
+          <ExpandButton
+            expanded={expanded}
+            handleExpandClick={handleExpandClick}
+          />
+        </div>
       </header>
       <div id='preview'></div>
     </section>

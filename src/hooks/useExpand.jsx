@@ -15,9 +15,9 @@ export function useExpand() {
     zIndex: 'unset'
   };
 
-  function handleButtonClick() {
+  function handleExpandClick() {
     setExpanded(expanded => !expanded);
   }
 
-  return { expanded, handleButtonClick, expandedStyles, unexpandedStyles };
+  return { expanded, handleExpandClick, expandedStyles, unexpandedStyles };
 }

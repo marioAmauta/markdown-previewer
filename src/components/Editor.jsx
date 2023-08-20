@@ -1,11 +1,14 @@
 import { placeholderText } from '../lib/constants';
 import { useEditor } from '../hooks/useEditor';
-import { ExpandButton, CompressButton } from './Icons';
 import { useExpand } from '../hooks/useExpand';
+import { CopyToClipboardButton, ExpandButton } from './Buttons';
 
 export function Editor() {
   const { editorText, handleEditorChange } = useEditor();
-  const { expanded, handleButtonClick, expandedStyles, unexpandedStyles } = useExpand();
+  console.log({
+    editorText
+  });
+  const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
     <section
@@ -14,9 +17,14 @@ export function Editor() {
     >
       <header className='header'>
         <h3>Editor</h3>
-        <button onClick={handleButtonClick}>
-          {expanded ? <CompressButton /> : <ExpandButton />}
-        </button>
+        <div>
+          <button>Clear editor</button>
+          <CopyToClipboardButton contentToCopy={editorText} />
+          <ExpandButton
+            expanded={expanded}
+            handleExpandClick={handleExpandClick}
+          />
+        </div>
       </header>
       <textarea
         placeholder={placeholderText}
