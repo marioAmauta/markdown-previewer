@@ -1,23 +1,34 @@
-import { ReactPropTypes } from 'react';
-import { CompressIcon, ExpandIcon } from './Icons';
+import { buttonActions } from '../lib/constants';
+import { CompressIcon, ExpandIcon, MoonIcon, SunIcon } from './Icons';
+import PropTypes from 'prop-types';
 
-export function CopyToClipboardButton({ contentToCopy }) {
-  async function writeToClipboard(contentToCopy) {
-    try {
-      if (contentToCopy === '') return alert('Nothing to copy!');
-
-      await navigator.clipboard.writeText(contentToCopy);
-      alert('Text copied to clipboard!');
-    } catch (err) {
-      console.error('Failed to copy: ', err);
+export function ActionButton({ label, actionHandler }) {
+  function checkActionType() {
+    switch (label) {
+      case buttonActions.EXPAND:
+        return <ExpandIcon />;
+      case buttonActions.COMPRESS:
+        return <CompressIcon />;
+      case buttonActions.DARK:
+        return <SunIcon />;
+      case buttonActions.LIGHT:
+        return <MoonIcon />;
+      default:
+        return label;
     }
   }
 
-  return <button onClick={() => writeToClipboard(contentToCopy)}>Copy to clipboard</button>;
-}
-
-export function ExpandButton({ expanded, handleExpandClick }) {
   return (
-    <button onClick={handleExpandClick}>{expanded ? <CompressIcon /> : <ExpandIcon />}</button>
+    <button
+      className='btn'
+      onClick={actionHandler}
+    >
+      {checkActionType()}
+    </button>
   );
 }
+
+ActionButton.propTypes = {
+  label: PropTypes.string.isRequired,
+  actionHandler: PropTypes.func.isRequired
+};

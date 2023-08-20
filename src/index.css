@@ -6,7 +6,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
 }
 
 textarea {
@@ -83,6 +83,11 @@ button {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
+.header div {
+  display: flex;
+  gap: 0.5rem;
+}
+
 #editor,
 #preview {
   padding: 1rem;
@@ -91,6 +96,21 @@ button {
 
 #preview {
   background-color: inherit;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: azure;
+  border-radius: 0.3rem;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: aquamarine;
+}
+
+.btn:has(svg) {
+  padding: 0.5rem;
 }
 
 @media (width < 700px) {

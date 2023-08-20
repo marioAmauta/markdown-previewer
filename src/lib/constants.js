@@ -43,4 +43,13 @@ export const placeholderText = `
   1. And last but not least, let's not forget embedded images:
   
   ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
-  `;
+  `.trim();
+
+export const buttonActions = {
+  CLEAR: 'CLEAR',
+  COPY: 'COPY',
+  EXPAND: 'EXPAND',
+  COMPRESS: 'COMPRESS',
+  LIGHT: 'LIGHT',
+  DARK: 'DARK'
+};

@@ -1,13 +1,10 @@
-import { placeholderText } from '../lib/constants';
+import { buttonActions, placeholderText } from '../lib/constants';
 import { useEditor } from '../hooks/useEditor';
 import { useExpand } from '../hooks/useExpand';
-import { CopyToClipboardButton, ExpandButton } from './Buttons';
+import { ActionButton } from './Buttons';
 
 export function Editor() {
-  const { editorText, handleEditorChange } = useEditor();
-  console.log({
-    editorText
-  });
+  const { editorText, handleClearEditor, handleEditorChange, handleCopyMarkdown } = useEditor();
   const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
@@ -18,11 +15,17 @@ export function Editor() {
       <header className='header'>
         <h3>Editor</h3>
         <div>
-          <button>Clear editor</button>
-          <CopyToClipboardButton contentToCopy={editorText} />
-          <ExpandButton
-            expanded={expanded}
-            handleExpandClick={handleExpandClick}
+          <ActionButton
+            label='Clear'
+            actionHandler={handleClearEditor}
+          />
+          <ActionButton
+            label='Copy Markdown'
+            actionHandler={handleCopyMarkdown}
+          />
+          <ActionButton
+            label={expanded ? buttonActions.COMPRESS : buttonActions.EXPAND}
+            actionHandler={handleExpandClick}
           />
         </div>
       </header>

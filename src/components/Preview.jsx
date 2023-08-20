@@ -1,7 +1,10 @@
+import { useEditor } from '../hooks/useEditor';
 import { useExpand } from '../hooks/useExpand';
-import { ExpandButton } from './Buttons';
+import { buttonActions } from '../lib/constants';
+import { ActionButton } from './Buttons';
 
 export function Preview() {
+  const { handleCopyHTML } = useEditor();
   const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
@@ -12,9 +15,13 @@ export function Preview() {
       <header className='header'>
         <h3>Preview</h3>
         <div>
-          <ExpandButton
-            expanded={expanded}
-            handleExpandClick={handleExpandClick}
+          <ActionButton
+            label='Copy HTML'
+            actionHandler={handleCopyHTML}
+          />
+          <ActionButton
+            label={expanded ? buttonActions.COMPRESS : buttonActions.EXPAND}
+            actionHandler={handleExpandClick}
           />
         </div>
       </header>

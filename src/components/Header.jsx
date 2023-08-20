@@ -1,15 +1,21 @@
 import { useState } from 'react';
-import { MoonIcon, SunIcon } from './Icons';
+import { ActionButton } from './Buttons';
+import { buttonActions } from '../lib/constants';
 
 export function Header() {
   const [darkMode, setDarkMode] = useState(false);
 
+  function handleThemeButtonClick() {
+    setDarkMode(darkMode => !darkMode);
+  }
+
   return (
     <header className='main-header'>
       <h1 className='title'>Markdown Previewer</h1>
-      <button onClick={() => setDarkMode(darkMode => !darkMode)}>
-        {darkMode ? <SunIcon /> : <MoonIcon />}
-      </button>
+      <ActionButton
+        label={darkMode ? buttonActions.DARK : buttonActions.LIGHT}
+        actionHandler={handleThemeButtonClick}
+      />
     </header>
   );
 }
