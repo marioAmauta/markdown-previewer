@@ -1,4 +1,4 @@
-export const placeholderText = `
+export const PLACEHOLDER_TEXT = `
   # Welcome to my React Markdown Previewer!
 
   ## This is a sub-heading...
@@ -45,11 +45,21 @@ export const placeholderText = `
   ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
   `.trim();
 
-export const buttonActions = {
+export const BUTTON_ACTIONS = {
   CLEAR: 'CLEAR',
   COPY: 'COPY',
   EXPAND: 'EXPAND',
   COMPRESS: 'COMPRESS',
   LIGHT: 'LIGHT',
   DARK: 'DARK'
+};
+
+export const SELECT_OPTIONS = {
+  PREVIEW: 'PREVIEW',
+  HTML: 'HTML'
+};
+
+export const COPY_TYPES = {
+  HTML: 'HTML',
+  MARKDOWN: 'MARKDOWN'
 };

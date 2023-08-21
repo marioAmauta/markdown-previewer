@@ -1,10 +1,9 @@
-import { useEditor } from '../hooks/useEditor';
+import PropTypes from 'prop-types';
 import { useExpand } from '../hooks/useExpand';
-import { buttonActions } from '../lib/constants';
+import { BUTTON_ACTIONS, SELECT_OPTIONS } from '../lib/constants';
 import { ActionButton } from './Buttons';
 
-export function Preview() {
-  const { handleCopyHTML } = useEditor();
+export function Preview({ handleCopyHTML, handleSelectChange }) {
   const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
@@ -15,12 +14,19 @@ export function Preview() {
       <header className='header'>
         <h3>Preview</h3>
         <div>
+          <select
+            onChange={handleSelectChange}
+            defaultValue={SELECT_OPTIONS.PREVIEW}
+          >
+            <option value={SELECT_OPTIONS.PREVIEW}>Preview</option>
+            <option value={SELECT_OPTIONS.HTML}>HTML</option>
+          </select>
           <ActionButton
             label='Copy HTML'
             actionHandler={handleCopyHTML}
           />
           <ActionButton
-            label={expanded ? buttonActions.COMPRESS : buttonActions.EXPAND}
+            label={expanded ? BUTTON_ACTIONS.COMPRESS : BUTTON_ACTIONS.EXPAND}
             actionHandler={handleExpandClick}
           />
         </div>
@@ -29,3 +35,8 @@ export function Preview() {
     </section>
   );
 }
+
+Preview.propTypes = {
+  handleCopyHTML: PropTypes.func.isRequired,
+  handleSelectChange: PropTypes.func.isRequired
+};

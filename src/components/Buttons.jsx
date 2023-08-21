@@ -1,17 +1,17 @@
-import { buttonActions } from '../lib/constants';
-import { CompressIcon, ExpandIcon, MoonIcon, SunIcon } from './Icons';
 import PropTypes from 'prop-types';
+import { BUTTON_ACTIONS } from '../lib/constants';
+import { CompressIcon, ExpandIcon, MoonIcon, SunIcon } from './Icons';
 
 export function ActionButton({ label, actionHandler }) {
   function checkActionType() {
     switch (label) {
-      case buttonActions.EXPAND:
+      case BUTTON_ACTIONS.EXPAND:
         return <ExpandIcon />;
-      case buttonActions.COMPRESS:
+      case BUTTON_ACTIONS.COMPRESS:
         return <CompressIcon />;
-      case buttonActions.DARK:
+      case BUTTON_ACTIONS.DARK:
         return <SunIcon />;
-      case buttonActions.LIGHT:
+      case BUTTON_ACTIONS.LIGHT:
         return <MoonIcon />;
       default:
         return label;

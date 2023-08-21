@@ -1,10 +1,9 @@
-import { buttonActions, placeholderText } from '../lib/constants';
-import { useEditor } from '../hooks/useEditor';
+import PropTypes from 'prop-types';
+import { BUTTON_ACTIONS, PLACEHOLDER_TEXT } from '../lib/constants';
 import { useExpand } from '../hooks/useExpand';
 import { ActionButton } from './Buttons';
 
-export function Editor() {
-  const { editorText, handleClearEditor, handleEditorChange, handleCopyMarkdown } = useEditor();
+export function Editor({ editorText, handleClearEditor, handleEditorChange, handleCopyMarkdown }) {
   const { expanded, handleExpandClick, expandedStyles, unexpandedStyles } = useExpand();
 
   return (
@@ -24,13 +23,13 @@ export function Editor() {
             actionHandler={handleCopyMarkdown}
           />
           <ActionButton
-            label={expanded ? buttonActions.COMPRESS : buttonActions.EXPAND}
+            label={expanded ? BUTTON_ACTIONS.COMPRESS : BUTTON_ACTIONS.EXPAND}
             actionHandler={handleExpandClick}
           />
         </div>
       </header>
       <textarea
-        placeholder={placeholderText}
+        placeholder={PLACEHOLDER_TEXT}
         value={editorText}
         onChange={handleEditorChange}
         id='editor'
@@ -38,3 +37,10 @@ export function Editor() {
     </section>
   );
 }
+
+Editor.propTypes = {
+  editorText: PropTypes.string.isRequired,
+  handleClearEditor: PropTypes.func.isRequired,
+  handleEditorChange: PropTypes.func.isRequired,
+  handleCopyMarkdown: PropTypes.func.isRequired
+};
