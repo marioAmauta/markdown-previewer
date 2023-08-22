@@ -12,7 +12,7 @@ export function Preview({ handleCopyHTML, handleSelectChange }) {
       style={expanded ? expandedStyles : unexpandedStyles}
     >
       <header className='header'>
-        <h2>Preview</h2>
+        <h2>View</h2>
         <div>
           <select
             className='btn'

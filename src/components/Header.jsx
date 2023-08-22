@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { SELECT_OPTIONS } from '../lib/constants';
+import { ActionButton } from './Buttons';
+import { useEditor } from '../hooks/useEditor';
 
 export function Header() {
+  const { handleSaveProgressClick } = useEditor();
   function handleDarkModeChange({ target }) {
     const $rootElementClassList = document.documentElement.classList;
 
@@ -41,14 +44,24 @@ export function Header() {
   return (
     <header className='main-header'>
       <h1 className='title'>Markdown Previewer</h1>
-      <select
-        id='darkModeToggle'
-        className='btn'
-        onChange={handleDarkModeChange}
-      >
-        <option value={SELECT_OPTIONS.LIGHT_MODE}>Light Mode</option>
-        <option value={SELECT_OPTIONS.DARK_MODE}>Dark Mode</option>
-      </select>
+      <div>
+        <span>Last saved {new Date().toLocaleString()}</span>
+        <nav>
+          <ActionButton
+            label='Save'
+            actionHandler={handleSaveProgressClick}
+          />
+
+          <select
+            id='darkModeToggle'
+            className='btn'
+            onChange={handleDarkModeChange}
+          >
+            <option value={SELECT_OPTIONS.LIGHT_MODE}>Light</option>
+            <option value={SELECT_OPTIONS.DARK_MODE}>Dark</option>
+          </select>
+        </nav>
+      </div>
     </header>
   );
 }
