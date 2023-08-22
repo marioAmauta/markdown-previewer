@@ -42,7 +42,7 @@ export const PLACEHOLDER_TEXT = `
   1. Use just 1s if you want!
   1. And last but not least, let's not forget embedded images:
   
-  ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
+  ![Random Image](https://fastly.picsum.photos/id/609/500/300.jpg?hmac=meMxkbekXo5xeKGLzKyKrMM2wQNNf-A0HfNW6C0h9_0)
   `.trim();
 
 export const BUTTON_ACTIONS = {
@@ -56,7 +56,9 @@ export const BUTTON_ACTIONS = {
 
 export const SELECT_OPTIONS = {
   PREVIEW: 'PREVIEW',
-  HTML: 'HTML'
+  HTML: 'HTML',
+  LIGHT_MODE: 'LIGHT MODE',
+  DARK_MODE: 'DARK MODE'
 };
 
 export const COPY_TYPES = {

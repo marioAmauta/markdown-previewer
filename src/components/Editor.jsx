@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { BUTTON_ACTIONS, PLACEHOLDER_TEXT } from '../lib/constants';
+import { PLACEHOLDER_TEXT } from '../lib/constants';
 import { useExpand } from '../hooks/useExpand';
 import { ActionButton } from './Buttons';
 
@@ -12,7 +12,7 @@ export function Editor({ editorText, handleClearEditor, handleEditorChange, hand
       style={expanded ? expandedStyles : unexpandedStyles}
     >
       <header className='header'>
-        <h3>Editor</h3>
+        <h2>Editor</h2>
         <div>
           <ActionButton
             label='Clear'
@@ -23,7 +23,7 @@ export function Editor({ editorText, handleClearEditor, handleEditorChange, hand
             actionHandler={handleCopyMarkdown}
           />
           <ActionButton
-            label={expanded ? BUTTON_ACTIONS.COMPRESS : BUTTON_ACTIONS.EXPAND}
+            label={expanded ? 'Collapse' : 'Expand'}
             actionHandler={handleExpandClick}
           />
         </div>

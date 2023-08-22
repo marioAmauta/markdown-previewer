@@ -5,7 +5,7 @@ export function useExpand() {
 
   const expandedStyles = {
     position: 'fixed',
-    inset: 0,
+    inset: '0.6rem',
     zIndex: 9
   };
 

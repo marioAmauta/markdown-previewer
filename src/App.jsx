@@ -9,7 +9,7 @@ export function App() {
     useEditor();
 
   return (
-    <section className='main-container'>
+    <>
       <Header />
       <Preview
         handleSelectChange={handleSelectChange}
@@ -29,6 +29,6 @@ export function App() {
           })
         }
       />
-    </section>
+    </>
   );
 }

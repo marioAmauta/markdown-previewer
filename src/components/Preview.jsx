@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useExpand } from '../hooks/useExpand';
-import { BUTTON_ACTIONS, SELECT_OPTIONS } from '../lib/constants';
+import { SELECT_OPTIONS } from '../lib/constants';
 import { ActionButton } from './Buttons';
 
 export function Preview({ handleCopyHTML, handleSelectChange }) {
@@ -12,9 +12,10 @@ export function Preview({ handleCopyHTML, handleSelectChange }) {
       style={expanded ? expandedStyles : unexpandedStyles}
     >
       <header className='header'>
-        <h3>Preview</h3>
+        <h2>Preview</h2>
         <div>
           <select
+            className='btn'
             onChange={handleSelectChange}
             defaultValue={SELECT_OPTIONS.PREVIEW}
           >
@@ -26,7 +27,7 @@ export function Preview({ handleCopyHTML, handleSelectChange }) {
             actionHandler={handleCopyHTML}
           />
           <ActionButton
-            label={expanded ? BUTTON_ACTIONS.COMPRESS : BUTTON_ACTIONS.EXPAND}
+            label={expanded ? 'Collapse' : 'Expand'}
             actionHandler={handleExpandClick}
           />
         </div>
