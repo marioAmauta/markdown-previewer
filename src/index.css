@@ -88,22 +88,20 @@ img {
 
 .main-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main-header div {
-  margin-left: auto;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
-  flex-wrap: wrap-reverse;
 }
 
 .main-header nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.main-header select {
+  margin-left: auto;
 }
 
 .main-header span {
