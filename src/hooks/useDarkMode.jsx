@@ -3,31 +3,28 @@ import { SELECT_OPTIONS } from '../lib/constants';
 
 export function useDarkMode() {
   function handleDarkModeChange({ target }) {
-    const $rootElementClassList = document.documentElement.classList;
+    const $rootElement = document.documentElement;
 
     if (target.value === SELECT_OPTIONS.LIGHT_MODE) {
-      $rootElementClassList.remove('dark');
+      $rootElement.classList.remove('dark');
     } else if (target.value === SELECT_OPTIONS.DARK_MODE) {
-      $rootElementClassList.add('dark');
+      $rootElement.classList.add('dark');
     }
   }
 
   useEffect(() => {
-    const $rootElementClassList = document.documentElement.classList;
-    const $darkModeToggle = document.getElementById('darkModeToggle');
     const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
     function checkDarkMode(isDarkMode) {
+      const $darkModeToggle = document.getElementById('darkModeToggle');
+      const $rootElement = document.documentElement;
+
       if (isDarkMode) {
         $darkModeToggle.value = SELECT_OPTIONS.DARK_MODE;
-        $rootElementClassList.add('dark');
-
-        console.log('change to dark mode!');
+        $rootElement.classList.add('dark');
       } else {
         $darkModeToggle.value = SELECT_OPTIONS.LIGHT_MODE;
-        $rootElementClassList.remove('dark');
-
-        console.log('change to light mode!');
+        $rootElement.classList.remove('dark');
       }
     }
 
