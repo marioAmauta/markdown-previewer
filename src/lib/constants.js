@@ -65,3 +65,8 @@ export const COPY_TYPES = {
   HTML: 'HTML',
   MARKDOWN: 'MARKDOWN'
 };
+
+export const LOCAL_STORAGE_KEYS = {
+  EDITOR_TEXT: 'editorText',
+  LAST_SAVED: 'lastSaved'
+};

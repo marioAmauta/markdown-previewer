@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { COPY_TYPES, PLACEHOLDER_TEXT, SELECT_OPTIONS } from '../lib/constants';
+import { COPY_TYPES, PLACEHOLDER_TEXT, SELECT_OPTIONS, LOCAL_STORAGE_KEYS } from '../lib/constants';
 import { parseMarkdown, writeToClipboard } from '../lib/services';
 
 export function useEditor() {
@@ -10,6 +10,10 @@ export function useEditor() {
 
   function handleEditorChange({ target }) {
     setEditorText(target.value);
+    localStorage.setItem(
+      LOCAL_STORAGE_KEYS.LAST_SAVED,
+      JSON.stringify(new Date().toLocaleString())
+    );
   }
 
   function handleClearEditor() {
@@ -17,6 +21,7 @@ export function useEditor() {
 
     if (confirm('Are you sure you want to clear the editor?')) {
       setEditorText('');
+      localStorage.removeItem(LOCAL_STORAGE_KEYS.LAST_SAVED);
     }
   }
 
@@ -35,6 +40,14 @@ export function useEditor() {
   }
 
   useEffect(() => {
+    const savedEditorText = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.EDITOR_TEXT));
+
+    if (savedEditorText) {
+      setEditorText(savedEditorText);
+    }
+  }, []);
+
+  useEffect(() => {
     const $preview = document.getElementById('preview');
 
     if (selectValue === SELECT_OPTIONS.PREVIEW) {
@@ -44,7 +57,11 @@ export function useEditor() {
     if (selectValue === SELECT_OPTIONS.HTML) {
       $preview.innerText = parsedMarkdown;
     }
-  }, [editorText, selectValue, parsedMarkdown]);
+  }, [selectValue, parsedMarkdown]);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEYS.EDITOR_TEXT, JSON.stringify(editorText));
+  }, [editorText]);
 
   return {
     editorText,

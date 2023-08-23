@@ -1,12 +1,9 @@
-import { useState } from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
-import { SELECT_OPTIONS } from '../lib/constants';
+import { LOCAL_STORAGE_KEYS, SELECT_OPTIONS } from '../lib/constants';
 
 export function Header() {
-  const [savedDate, setSavedDate] = useState(new Date().toLocaleString());
   const { handleDarkModeChange } = useDarkMode();
-
-  console.log('rendering Header');
+  const lastSaved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.LAST_SAVED));
 
   return (
     <header className='main-header'>
@@ -21,7 +18,7 @@ export function Header() {
           <option value={SELECT_OPTIONS.DARK_MODE}>Dark</option>
         </select>
       </nav>
-      <span>Last saved {savedDate}</span>
+      <span>{lastSaved ? `Last saved: ${lastSaved}` : ''}</span>
     </header>
   );
 }
