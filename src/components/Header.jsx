@@ -1,8 +1,8 @@
-import { useDarkMode } from '../hooks/useDarkMode';
-import { LOCAL_STORAGE_KEYS, SELECT_OPTIONS } from '../lib/constants';
+import { useTheme } from '../hooks/useTheme';
+import { LOCAL_STORAGE_KEYS, THEME_MODES } from '../lib/constants';
 
 export function Header() {
-  const { handleDarkModeChange } = useDarkMode();
+  const { theme, onThemeChange } = useTheme();
   const lastSaved = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS.LAST_SAVED));
 
   return (
@@ -12,10 +12,17 @@ export function Header() {
         <select
           id='darkModeToggle'
           className='btn'
-          onChange={handleDarkModeChange}
+          onChange={onThemeChange}
+          value={theme}
         >
-          <option value={SELECT_OPTIONS.LIGHT_MODE}>Light</option>
-          <option value={SELECT_OPTIONS.DARK_MODE}>Dark</option>
+          {Object.values(THEME_MODES).map(theme => (
+            <option
+              key={theme}
+              value={theme}
+            >
+              {theme.charAt(0).toUpperCase() + theme.slice(1)}
+            </option>
+          ))}
         </select>
       </nav>
       <span>{lastSaved ? `Last saved: ${lastSaved}` : ''}</span>

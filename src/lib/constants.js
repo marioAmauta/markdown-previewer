@@ -56,9 +56,13 @@ export const BUTTON_ACTIONS = {
 
 export const SELECT_OPTIONS = {
   PREVIEW: 'PREVIEW',
-  HTML: 'HTML',
-  LIGHT_MODE: 'LIGHT MODE',
-  DARK_MODE: 'DARK MODE'
+  HTML: 'HTML'
+};
+
+export const THEME_MODES = {
+  LIGHT: 'light',
+  DARK: 'dark',
+  SYSTEM: 'system'
 };
 
 export const COPY_TYPES = {
